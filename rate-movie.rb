@@ -45,13 +45,32 @@ when "update"
 	end
 
 when "display"
-	#Print each key=>value pair in hash table
+	#Print each title=>rating pair in hash table
 	movies.each { |title, rating|
 		puts "#{title}: #{rating}"
 	}
 
 when "delete"
-	puts "Deleted!"
+	#Delete title=>rating from hash table
+	print "Title to Delete: "
+	title = gets.chomp.to_sym
+
+	if movies[title].nil?
+		puts "That movie doesn't exist."
+	else 
+		#Print out title=>rating to delete, confirm y/n to delete
+		puts "#{title}: #{rating}"
+		puts "Are you sure you want to delete?"
+		delete = gets.chomp
+		case delete
+		when "yes", "y"
+			movies.delete(title)
+			puts "Deleted!"
+		else 
+		end
+	end
+
 else 
 	puts "Error!"
 end
+
