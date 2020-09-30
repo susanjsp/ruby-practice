@@ -71,6 +71,7 @@ when "delete"
 	end
 
 else 
-	puts "Error!"
+	#Error message with instructions
+	puts "Error! Please enter 'add', 'update', 'display', or 'delete'."
 end
 
