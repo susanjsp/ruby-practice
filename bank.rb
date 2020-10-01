@@ -7,4 +7,43 @@ class Account
 		@balance = balance
 	end
 
+	#PRIVATE!!
+	private
+	def pin
+		@pin = 1234
+	end
+
+	def pin_error
+		return "Access denied: incorrect PIN."
+	end
+
+	public
+	def display_balance(pin_number)
+		if pin_number == @pin
+			puts "Balance: $#{@balance}."
+		else 
+			puts pin_error
+		end
+	end
+
+	def withdraw(pin_number, amount)
+		if pin_number == @pin
+			@balance -= amount
+			puts "Withdrew #{amount}. New balance: $#{@balance}"
+		else 
+			puts pin_error
+		end
+	end
+
+	def deposit(pin_number, amount)
+		if pin_number == @pin
+			@balance += amount
+			puts "Deposit #{amount}. New balance: $#{@balance}"
+		else
+			puts pin_error
+		end
+	end
+
 end
+
+checking_account = Account.new("Gregory", 1000)
