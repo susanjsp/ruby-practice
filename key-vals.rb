@@ -15,7 +15,7 @@ good_movies = movie_ratings.select { |movie, rating| rating > 3}
 puts good_movies
 
 #Iterate through keys, print key: value
-
+movie_ratings.each { |key, value| puts "#{key}: #{value}" }
 
 #Iterate through keys, print value
 movie_ratings.each_key { |key| print key, " " }

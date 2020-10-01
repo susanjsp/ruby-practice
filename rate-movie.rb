@@ -18,7 +18,7 @@ fiveplus = Proc.new { |movie, rating| rating > 5 }
 #Prompt user for input
 puts "What would you like to do?"
 puts "add update display delete"
-puts "filters: a-z 1-10 5+"
+puts "filters: titles-only a-z 1-10 5+"
 choice = gets.chomp
 
 #Case statement for input 'choice'
@@ -77,6 +77,9 @@ when "delete"
 		end
 	end
 
+when "titles-only"
+	movies.each { |movie, rating| puts movie }
+
 when "a-z"
 	sort_movies = movies.sort_by(&alphasort)
 	sort_movies.each { |title, rating| 
@@ -98,6 +101,6 @@ when "5+"
 else 
 	#Error message with instructions
 	puts "Error! Please enter 'add', 'update', 'display', or 'delete'."
-	
+
 end
 
