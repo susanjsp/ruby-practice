@@ -10,8 +10,15 @@ movies = {
 	moana: 10
 }
 
+#Functions for sorting/filter
+alphasort = Proc.new { |movie, rating| movie }
+ratingsort = Proc.new { |movie, rating| rating }
+fiveplus = Proc.new { |movie, rating| rating > 5 }
+
 #Prompt user for input
 puts "What would you like to do?"
+puts "add update display delete"
+puts "filters: a-z 1-10 5+"
 choice = gets.chomp
 
 #Case statement for input 'choice'
@@ -70,8 +77,27 @@ when "delete"
 		end
 	end
 
+when "a-z"
+	sort_movies = movies.sort_by(&alphasort)
+	sort_movies.each { |title, rating| 
+		puts "#{title}: #{rating}"
+	}
+
+when "1-10"
+	sort_movies = movies.sort_by(&ratingsort)
+	sort_movies.each { |title, rating| 
+		puts "#{title}: #{rating}"
+	}
+
+when "5+"
+	sort_movies = movies.select(&fiveplus)
+	sort_movies.each { |title, rating| 
+		puts "#{title}: #{rating}"
+	}
+
 else 
 	#Error message with instructions
 	puts "Error! Please enter 'add', 'update', 'display', or 'delete'."
+	
 end
 
